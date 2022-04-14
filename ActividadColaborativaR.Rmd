@@ -1,0 +1,58 @@
+---
+title: "Ejercicios en R"
+author: "Ernesto Miranda"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Ejercicios en R
+
+1. Escribe una función que genere una secuencia aleatoria de DNA de tamaño “n”.
+```{r}
+n <- readline("Ingresa el tamaño de la secuencia: ")
+
+# Funcion generar la secuencia
+generarAdn = function(n){
+  bases <- c("A", "T", "C", "G")
+  sample(bases, n, TRUE)
+}
+
+chain <- generarAdn(n)
+
+```
+2. Codifica una función que calcula el tamaño de una secuencia de DNA.
+```{r}
+# Funcion para calcular el tamaño de la secuencia
+sizeDna <- function(chain){
+  length(chain)
+}
+```
+3. Crea una función que recibe una secuencia de DNA e imprime el porcentaje de cada base en la 
+secuencia.
+```{r}
+# Funcion para calcular el porcentaje de cada base nitrogenada
+percentageBase <- function(chain){
+  size <- sizeDna(chain)
+  bases <- c("A", "T", "C", "G")
+  percentages <- numeric(4)
+  for (el in chain) {
+    for (i in 1:4){
+      if (el == bases[i]) percentages[i] <- percentages[i] + 1
+    }
+  }
+  for (i in 1:4){
+    percentages[i] = percentages[i] / size
+  }
+  percentages
+}
+percentageBase(chain)
+```
+
+5. Crea una función que traduce una secuencia de RNA a una secuencia de proteínas, usa la siguiente tabla. 
+```{r}
+
+```
