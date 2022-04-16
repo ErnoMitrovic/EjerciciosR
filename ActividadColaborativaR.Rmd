@@ -55,6 +55,15 @@ percentageBase(chain)
 5. Crea una función que traduce una secuencia de RNA a una secuencia de proteínas, usa la siguiente tabla. 
 ![Tabla de proteinas](./img/proteinas.png)
 ```{r}
+# Funcion para concatenar la cadena
+concat = function(chain){
+  clean <- ""
+  for(l in chain){
+    clean <- paste(clean, l, sep="")
+  }
+  clean
+}
+
 prot = function(codon){
   switch(codon, 
          "UUU" = "Phe", "UUC" = "Phe", "UUA" = "Leu", "UUG" = "Leu", 
@@ -69,8 +78,10 @@ prot = function(codon){
          "CAA" = "Gin", "CAG" = "Gin", "AAU" = "Asn", "AAC" = "Asn",
          "AAU" = "Asn", "AAC" = "Asn", "AAA" = "Lys", "AAG" = "Lys",
          "GAU" = "Asp", "GAC" = "Asp", "GAA" = "Glu", "GAG" = "Glu",
-         
-         )
+         "UGU" = "Cys", "UGC" = "Cys", "CGU" = "Arg", "CGC" = "Arg",
+         "CGA" = "Arg", "CGG" = "Arg", "AGU" = "Ser", "AGC" = "Ser",
+         "AGA" = "Arg", "AGG" = "Arg", "GGU" = "Gly", "GGC" = "Gly",
+         "GGA" = "Gly", "GGG" = "Gly")
 }
 rnaProt = function(chain){
   
