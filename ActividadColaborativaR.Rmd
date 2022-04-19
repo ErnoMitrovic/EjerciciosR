@@ -86,4 +86,88 @@ prot = function(codon){
 rnaProt = function(chain){
   
 }
+
+rev<-function(l)
+{
+  r<-c()
+  i<-1
+  j<-length(l)
+  for (i in 1:length(l))
+  {
+    r[i]<-l[j]
+    j<-j-1
+  }
+  return(r)
+}
+#Ejercicio 1
+n<-readline("Ingrese el tamaño de la secuencia: ")
+
+generar<-function(a)
+{
+  bases<- c("A","T","C","G")
+  dna<-sample(bases,a,replace=TRUE)
+  return (dna)
+}
+dna<-generar(n) # generan al azar
+dna
+```
+```{r}
+#Ejercicio 6
+n<-readline("Número de nucleótidos ATCG: ")
+print("Escribe A T C G o no se tomarán en cuenta")
+reverse<-function(n)
+{
+  l<-c()
+  r<-c()
+  i<-1
+  for (i in 1:n)
+  {
+    
+    a<-readline("Nucleótidos A T C G: ")
+    a<-toupper(a)
+    if (a=="A"||a=="T"||a=="C"||a=="G")
+    {
+      l[i]<-a
+    }
+  }
+  rev(l)
+}
+reverse(n)
+
+# Ejercicio 7
+n<-readline("Número de nucleótidos ATCG: ")
+comp<-function(n)
+{
+  l<-c()
+  i<-1
+  for (i in 1:n)
+  {
+    a<-readline("Nucleótidos A T C G: ")
+    a<-toupper(a)
+    if (a=="A")
+    {
+      l[i]<-"T"
+    }
+    else if (a=="T")
+    {
+      l[i]<-"A"
+    }
+    else if (a=="C")
+    {
+      l[i]<-"G"
+    }
+    else if (a=="G")
+    {
+      l[i]<-"C"
+    }
+  }
+  return (l)
+}
+comp(n)
+
+# Ejercicio 8
+
+n<-readline("Número de nucleótidos ATCG: ")
+a<-comp(n)
+rev(a)
 ```
