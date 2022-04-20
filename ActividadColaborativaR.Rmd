@@ -77,7 +77,7 @@ transcripcion <- function(dna){
   return(rna)
 }
 
-dna <- creacion(n);
+dna <- creacion(n)
 dna
 transcripcion(dna)
 ```
