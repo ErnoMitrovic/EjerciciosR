@@ -52,7 +52,7 @@ percentageBase <- function(chain){
 percentageBase(chain)
 ```
 
-4.Programa una función que transcribe DNA a RNA, asume que te proporcionan la cadena codifican:
+4. Programa una función que transcribe DNA a RNA, asume que te proporcionan la cadena codifican.
 ```{r} 
 
 n <- readline("Número de nucleótidos ATCG: ")
