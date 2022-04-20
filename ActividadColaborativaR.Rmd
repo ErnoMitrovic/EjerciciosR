@@ -52,6 +52,36 @@ percentageBase <- function(chain){
 percentageBase(chain)
 ```
 
+4.Programa una función que transcribe DNA a RNA, asume que te proporcionan la cadena codifican:
+```{r} 
+
+n <- readline("Número de nucleótidos ATCG: ")
+
+creacion <- function(n){
+  dna <- c()
+  for (i in 1:n){
+    dna[i] <- c(readline("Base:"))
+    }
+return(dna)
+}
+
+transcripcion <- function(dna){
+  rna <- c();
+  for (i in 1:length(dna)){
+    if (dna[i] == "T"){
+      rna[i] <- "U"
+    }else {
+      rna[i] <- dna[i]
+    }
+  }
+  return(rna)
+}
+
+dna <- creacion(n);
+dna
+transcripcion(dna)
+```
+
 5. Crea una función que traduce una secuencia de RNA a una secuencia de proteínas, usa la siguiente tabla. 
 ![Tabla de proteinas](./img/proteinas.png)
 ```{r}
