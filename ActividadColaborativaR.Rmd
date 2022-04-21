@@ -30,7 +30,8 @@ print(chain)
 sizeDna <- function(chain){
   length(chain)
 }
-
+sizeChain <- sizeDna(chain)
+print(sizeChain)
 ```
 3. Crea una función que recibe una secuencia de DNA e imprime el porcentaje de cada base en la 
 secuencia.
@@ -50,7 +51,9 @@ percentageBase <- function(chain){
   }
   percentages
 }
-percentageBase(chain)
+percentagesChain <- percentageBase(chain)
+print(percentagesChain)
+
 ```
 
 4. Programa una función que transcribe DNA a RNA, asume que te proporcionan la cadena codifican.
@@ -80,7 +83,8 @@ transcripcion <- function(dna){
 
 dna <- creacion(n)
 dna
-transcripcion(dna)
+rna <- transcripcion(dna)
+rna
 ```
 
 5. Crea una función que traduce una secuencia de RNA a una secuencia de proteínas, usa la siguiente tabla. 
@@ -126,11 +130,15 @@ rnaProt = function(chain){
   }
   prots
 }
+
+protChain <- rnaProt(rna)
+
 ```
 
+6. Escribe una función que recibe una hebra directa y regresa la hebra inversa.
 ```{r}
-rev<-function(l)
-{
+#Ejercicio 6
+rev<-function(l){
   r<-c()
   i<-1
   j<-length(l)
@@ -141,21 +149,6 @@ rev<-function(l)
   }
   return(r)
 }
-#Ejercicio 1
-n<-readline("Ingrese el tamaño de la secuencia: ")
-
-generar<-function(a)
-{
-  bases<- c("A","T","C","G")
-  dna<-sample(bases,a,replace=TRUE)
-  return (dna)
-}
-dna<-generar(n) # generan al azar
-dna
-```
-
-```{r}
-#Ejercicio 6
 n<-readline("Número de nucleótidos ATCG: ")
 print("Escribe A T C G o no se tomarán en cuenta")
 reverse<-function(n)
@@ -176,7 +169,10 @@ reverse<-function(n)
   rev(l)
 }
 reverse(n)
+```
 
+7. Escribe una función qué recibe una hebra directa y obtiene la hebra complementaria.
+```{r}
 # Ejercicio 7
 n<-readline("Número de nucleótidos ATCG: ")
 comp<-function(n)
@@ -207,7 +203,10 @@ comp<-function(n)
   return (l)
 }
 comp(n)
-
+```
+8. Escribe la función en R para obtener la hebra complementaria inversa, desde una hebra 
+complementaria.
+```{r}
 # Ejercicio 8
 
 n<-readline("Número de nucleótidos ATCG: ")
