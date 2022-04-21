@@ -85,15 +85,7 @@ transcripcion(dna)
 5. Crea una función que traduce una secuencia de RNA a una secuencia de proteínas, usa la siguiente tabla. 
 ![Tabla de proteinas](./img/proteinas.png)
 ```{r}
-# Funcion para concatenar la cadena
-concat = function(chain){
-  clean <- character()
-  for(l in chain){
-    clean <- paste(clean, l, sep="")
-  }
-  clean
-}
-
+# Funcion que devuelve el codon (si no está en la lista, se termina la secuencia)
 prot = function(codon){
   switch(codon, 
          "UUU" = "Phe", "UUC" = "Phe", "UUA" = "Leu", "UUG" = "Leu", 
@@ -114,14 +106,28 @@ prot = function(codon){
          "GGA" = "Gly", "GGG" = "Gly", "AUG" = "Met", "-")
 }
 
+# Funcion que regresa la cadena con las proteinas
 rnaProt = function(chain){
-  if(class(chain) != "character")
-    chain <- concat(chain)
-  for(i in 1:nchar(chain)){
-    
+  if(class(chain) == "character"){
+    chain <- strsplit(toupper(chain), "")[[1]]
   }
+  codon <- character()
+  prots <- c()
+  for(b in chain){
+    codon <- paste(codon, b, sep = "")
+    if(nchar(codon) == 3){
+      prots <- c(prots, prot(codon))
+      if (prot(codon) == "-") {
+        break
+      }
+      codon <- character()
+    }
+  }
+  prots
 }
+```
 
+```{r}
 rev<-function(l)
 {
   r<-c()
@@ -146,6 +152,7 @@ generar<-function(a)
 dna<-generar(n) # generan al azar
 dna
 ```
+
 ```{r}
 #Ejercicio 6
 n<-readline("Número de nucleótidos ATCG: ")
