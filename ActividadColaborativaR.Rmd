@@ -22,7 +22,7 @@ generarAdn = function(n){
 }
 
 chain <- generarAdn(n)
-
+print(chain)
 ```
 2. Codifica una función que calcula el tamaño de una secuencia de DNA.
 ```{r}
@@ -30,6 +30,7 @@ chain <- generarAdn(n)
 sizeDna <- function(chain){
   length(chain)
 }
+
 ```
 3. Crea una función que recibe una secuencia de DNA e imprime el porcentaje de cada base en la 
 secuencia.
