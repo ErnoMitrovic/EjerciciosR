@@ -57,7 +57,7 @@ percentageBase(chain)
 ```{r}
 # Funcion para concatenar la cadena
 concat = function(chain){
-  clean <- ""
+  clean <- character()
   for(l in chain){
     clean <- paste(clean, l, sep="")
   }
@@ -81,9 +81,14 @@ prot = function(codon){
          "UGU" = "Cys", "UGC" = "Cys", "CGU" = "Arg", "CGC" = "Arg",
          "CGA" = "Arg", "CGG" = "Arg", "AGU" = "Ser", "AGC" = "Ser",
          "AGA" = "Arg", "AGG" = "Arg", "GGU" = "Gly", "GGC" = "Gly",
-         "GGA" = "Gly", "GGG" = "Gly")
+         "GGA" = "Gly", "GGG" = "Gly", "AUG" = "Met", "-")
 }
+
 rnaProt = function(chain){
-  
+  if(class(chain) != "character")
+    chain <- concat(chain)
+  for(i in 1:nchar(chain)){
+    
+  }
 }
 ```
