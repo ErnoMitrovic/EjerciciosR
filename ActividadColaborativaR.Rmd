@@ -214,7 +214,7 @@ rev(a)
 
 ```{r}
 
-# Funcion para calcular el porcentaje de cada base nitrogenada tomando en cuenta que pudieran exisitir guiones y nucleótidos desconocidos
+# Funcion para calcular el porcentaje de cada base nitrogenada tomando en cuenta que pudieran exisitir giones y nucleótidos desconocidos
 percentageBase <- function(chain){
   size <- sizeDna(chain)
   bases <- c("A", "T", "C", "G", "-", "N")
@@ -230,6 +230,49 @@ percentageBase <- function(chain){
     percentages[i] = percentages[i] / size
   }
   percentages
+}
+
+
+#Función que recibe una hebra directa y obtiene la hebra complementaria tomando en cuenta que pudieran exisitir guiones y nucleótidos desconocidos 
+comp <- function(a){
+  if (a=="A")
+  {
+    c<-"T"
+  }
+  else if (a=="T")
+  {
+    c<-"A"
+  }
+  else if (a=="C")
+  {
+    c<-"G"
+  }
+  else if (a=="G")
+  {
+    c<-"C"
+  }
+  else if (a=="-")
+  {
+    c<-"-"
+  }
+  else 
+  {
+    c<-"N"
+  }
+}
+
+complementaria <- function(hebra){
+  s = nchar(hebra)
+  chain = substr(hebra,4,s-4)
+  c = ""
+  for (i in 1:nchar(chain)){
+      c = paste(c,comp(substr(chain,i,i)), sep="")
+  }
+  complem = "3'-"
+  complem = paste(complem,c, sep="")
+  complem = paste(complem,"-5'", sep="")
+  
+  return (complem)
 }
 
 ```
