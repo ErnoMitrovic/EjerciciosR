@@ -214,7 +214,7 @@ rev(a)
 
 ```{r}
 
-# Funcion para calcular el porcentaje de cada base nitrogenada tomando en cuenta que pudieran exisitir giones y nucleótidos desconocidos
+# Funcion para calcular el porcentaje de cada base nitrogenada tomando en cuenta que pudieran exisitir guiones y nucleótidos desconocidos
 percentageBase <- function(chain){
   size <- sizeDna(chain)
   bases <- c("A", "T", "C", "G", "-", "N")
