@@ -210,3 +210,26 @@ n<-readline("Número de nucleótidos ATCG: ")
 a<-comp(n)
 rev(a)
 ```
+9.Prueba y modifica algunas de las funciones tomando en cuenta que las secuencias pueden contener caracteres especiales donde aparte de ATGC, en ADN, y AUGC, en ARN, pudimos ver algunos guiones (omitidos) y N (desconocido) nucleótido. 
+
+```{r}
+
+# Funcion para calcular el porcentaje de cada base nitrogenada tomando en cuenta que pudieran exisitir giones y nucleótidos desconocidos
+percentageBase <- function(chain){
+  size <- sizeDna(chain)
+  bases <- c("A", "T", "C", "G", "-", "N")
+  percentages <- numeric(6)
+  for (i in 1:size) {
+    for (j in 1:6){
+      if (substr(chain,i,i) == bases[j]){
+        percentages[j] <- percentages[j] + 1
+      }
+    }
+  }
+  for (i in 1:6){
+    percentages[i] = percentages[i] / size
+  }
+  percentages
+}
+
+```
