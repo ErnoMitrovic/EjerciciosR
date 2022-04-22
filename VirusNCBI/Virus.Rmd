@@ -1,0 +1,12 @@
+---
+title: "Base de datos de virus de NCBI"
+author: "Ernesto Miranda"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Bases de datos de virus de NCBI
