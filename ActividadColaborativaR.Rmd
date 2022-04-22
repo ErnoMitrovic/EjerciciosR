@@ -140,12 +140,9 @@ protChain <- rnaProt(rna)
 #Ejercicio 6
 rev<-function(l){
   r<-c()
-  i<-1
-  j<-length(l)
-  for (i in 1:length(l))
+  for (i in length(l):1)
   {
-    r[i]<-l[j]
-    j<-j-1
+    r<-c(r, l[i])
   }
   return(r)
 }
