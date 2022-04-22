@@ -1,6 +1,6 @@
 ---
 title: "Ejercicios en R"
-author: "Ernesto Miranda"
+author: "Ernesto Miranda, José Aram Méndez Gómez A01657142, Iñaki A01662274, Juan"
 date: "`r Sys.Date()`"
 output: html_document
 ---
