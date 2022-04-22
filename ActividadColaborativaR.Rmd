@@ -64,18 +64,18 @@ n <- readline("Número de nucleótidos ATCG: ")
 creacion <- function(n){
   dna <- c()
   for (i in 1:n){
-    dna[i] <- c(readline("Base:"))
+    dna[i] <- c(toupper(readline("Base:")))
     }
-return(dna)
+  return(dna)
 }
 
 transcripcion <- function(dna){
   rna <- c();
-  for (i in 1:length(dna)){
-    if (dna[i] == "T"){
-      rna[i] <- "U"
+  for (el in dna){
+    if (el == "T"){
+      rna <- c(rna, "U")
     }else {
-      rna[i] <- dna[i]
+      rna <- c(rna, el)
     }
   }
   return(rna)
