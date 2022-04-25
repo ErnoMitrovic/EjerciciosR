@@ -7,6 +7,28 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library("seqinr")
+
+zika <- read.fasta("/Users/aram/Downloads/sequence Zika.fasta")
+
+class(zika)
+str(zika)
+
+#Tamaño de secuencia
+length(zika[[1]])
+
+#Composición por nucleótido
+table(zika[[1]])
+
+# Contenido de GC
+combinacion <- count(zika[[1]], 2)
+combinacion[c("gc")]
+
+#Complementaria
+comp(zika[[1]])
+
+#Grafica
 ```
 
 ## Bases de datos de virus de NCBI
