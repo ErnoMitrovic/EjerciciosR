@@ -7,7 +7,6 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-
 library("seqinr")
 zika <- read.fasta("/Users/aram/Downloads/zika.fasta")
 corona <- read.fasta("/Users/aram/Downloads/sarscov.fasta")
@@ -30,12 +29,12 @@ tamaño <- function(enfermedades){
 
 
 #Composición por nucleótido
-comp <- function(enfermedades){
-  comp <- c()
+composición <- function(enfermedades){
+  composición <- c()
   for (i in 1:length(enfermedades)){
-    comp[i] <- lapply(enfermedades[[[i]],table)
+    composición[i] <- lapply(enfermedades[i],table)
   }
-  return(comp)
+  return(composición)
 }
 
 
@@ -56,16 +55,20 @@ gc <- function(enfermedades){
 
 
 #Complementaria
-comple <- function(enfermedades){
-  
-  return(comple)
+complementaria <- function(enfermedades){
+  complementaria <- c()
+  j <- 1
+  for (i in 1:length(enfermedades)){
+    
+    complementaria[i] <- lapply(enfermedades[[i]],comp)
+  }
+  return(complementaria)
 }
-
 
 
 #Resultados
 tamaño(enfermedades)
-comp(enfermedades)
+composición(enfermedades)
 gc(enfermedades)
-comple(enfermedades)
+complementaria(enfermedades)
 ```
