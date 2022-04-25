@@ -9,26 +9,63 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 
 library("seqinr")
+zika <- read.fasta("/Users/aram/Downloads/zika.fasta")
+corona <- read.fasta("/Users/aram/Downloads/sarscov.fasta")
+wuhan <- read.fasta("/Users/aram/Downloads/wuhan.fasta")
+mers <- read.fasta("/Users/aram/Downloads/mers.fasta")
+dengue <- read.fasta("/Users/aram/Downloads/dengue.fasta")
 
-zika <- read.fasta("/Users/aram/Downloads/sequence Zika.fasta")
 
-class(zika)
-str(zika)
+enfermedades <- list(zika, corona, wuhan, mers, dengue)
 
-#Tamaño de secuencia
-length(zika[[1]])
+
+#Tamaño de secuencias
+tamaño <- function(enfermedades){
+  tamaño <- c()
+  for (i in 1:length(enfermedades)){
+    tamaño[i] <- lapply(enfermedades[[i]],length)
+  }
+  return(tamaño)
+}
+
 
 #Composición por nucleótido
-table(zika[[1]])
+comp <- function(enfermedades){
+  comp <- c()
+  for (i in 1:length(enfermedades)){
+    comp[i] <- lapply(enfermedades[[[i]],table)
+  }
+  return(comp)
+}
+
 
 # Contenido de GC
-combinacion <- count(zika[[1]], 2)
-combinacion[c("gc")]
+combinacion <- function(lista){
+  combinacion <- count(lista[[1]], 2)
+  resultado <- combinacion[c("gc")]
+  return(resultado)
+}
+
+gc <- function(enfermedades){
+  gc <- c()
+  for (i in 1:length(enfermedades)){
+    gc[i] <- combinacion(enfermedades[[i]])
+  }
+  return(gc)
+}
+
 
 #Complementaria
-comp(zika[[1]])
+comple <- function(enfermedades){
+  
+  return(comple)
+}
 
-#Grafica
+
+
+#Resultados
+tamaño(enfermedades)
+comp(enfermedades)
+gc(enfermedades)
+comple(enfermedades)
 ```
-
-## Bases de datos de virus de NCBI
