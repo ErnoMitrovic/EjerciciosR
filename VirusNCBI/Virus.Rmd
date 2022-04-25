@@ -39,18 +39,16 @@ composición <- function(enfermedades){
 
 
 # Contenido de GC
-combinacion <- function(lista){
-  combinacion <- count(lista[[1]], 2)
-  resultado <- combinacion[c("gc")]
-  return(resultado)
-}
-
-gc <- function(enfermedades){
-  gc <- c()
-  for (i in 1:length(enfermedades)){
-    gc[i] <- combinacion(enfermedades[[i]])
+numgc <- function(enfermedades){
+  i<-1
+  l_gc<-c()
+  for (i in 1:length(enfermedades)) {
+    v <- composición(enfermedades)
+    v1 <- v[[i]]
+    gc <- v1[c("g")] + v1[c("c")]
+    l_gc[i]<-gc
   }
-  return(gc)
+  return(l_gc)
 }
 
 
@@ -69,6 +67,6 @@ complementaria <- function(enfermedades){
 #Resultados
 tamaño(enfermedades)
 composición(enfermedades)
-gc(enfermedades)
+numgc(enfermedades)
 complementaria(enfermedades)
 ```
