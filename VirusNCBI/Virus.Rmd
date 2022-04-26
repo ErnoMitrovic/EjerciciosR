@@ -1,12 +1,35 @@
 ---
 title: "Base de datos de virus de NCBI"
-author: "Ernesto Miranda"
+author: 
+  - Ernesto Miranda A01656828
+  - José Aram A01657142
+  - Iñaki A01662274 
+  - Juan Antonio Mancera A01662634
 date: "`r Sys.Date()`"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+```
+De cada uno debes obtener sus secuencias y responder las siguientes preguntas:
+
+1. ¿Cuál es el tamaño de cada secuencia?
+
+2. ¿Cúal es la composición de nucleótidos de cada secuencia?
+
+3. ¿Cuál es el contenido de GC de cada virus?
+
+4. Crear una función para obtener la secuencia en complementaria e imprimirla por cada secuencia, ejemplo:
+
+**Virus original**: agttgttagt ctacgtggac cgacaagaac
+
+**Complementaria**: tcaacaatca gatgcacctg gctgttcttg
+
+
+5. Crear una gráfica de resumen para comparar la composición de nucleótidos de las 5 secuencias.
+
+```{r}
 library("seqinr")
 zika <- read.fasta("zika.fasta")
 corona <- read.fasta("sarscov.fasta")
@@ -99,13 +122,6 @@ tamaño(proteinas)
 cE <- composición(enfermedades)
 cP <- composición(proteinas)
 
-numgc(enfermedades)
-numgc(proteinas)
-
-complementaria(enfermedades)
-complementaria(proteinas)
-
-
 basesE <- allBases(cE)
 barplot(matrix(c(basesE$a, basesE$c, basesE$g, basesE$t), nrow = 4, byrow = TRUE), beside = TRUE, col = c("red", "black", "green", "orange"), las =2, names.arg= names(enfermedades))
 legend("topleft",legend = c("A","C","G", "T") , col = c("red", "black", "green", "orange"),  pt.cex = 1, pch = 15 , cex = 1)
@@ -113,4 +129,12 @@ legend("topleft",legend = c("A","C","G", "T") , col = c("red", "black", "green",
 basesP <- allBases(cP)
 barplot(matrix(c(basesP$a, basesP$c, basesP$g, basesP$t), nrow = 4, byrow = TRUE), beside = TRUE, col = c("red", "black", "green", "orange"), las =2, names.arg= names(proteinas))
 legend("topleft",legend = c("A","C","G", "T") , col = c("red", "black", "green", "orange"),  pt.cex = 1, pch = 15 , cex = 0.8)
+
+numgc(enfermedades)
+numgc(proteinas)
+
+complementaria(enfermedades)
+complementaria(proteinas)
+
+
 ```
