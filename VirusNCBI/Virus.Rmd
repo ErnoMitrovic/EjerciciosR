@@ -8,14 +8,29 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library("seqinr")
-zika <- read.fasta("/Users/aram/Downloads/zika.fasta")
-corona <- read.fasta("/Users/aram/Downloads/sarscov.fasta")
-wuhan <- read.fasta("/Users/aram/Downloads/wuhan.fasta")
-mers <- read.fasta("/Users/aram/Downloads/mers.fasta")
-dengue <- read.fasta("/Users/aram/Downloads/dengue.fasta")
-
+zika <- read.fasta("zika.fasta")
+corona <- read.fasta("sarscov.fasta")
+wuhan <- read.fasta("wuhan.fasta")
+mers <- read.fasta("mers.fasta")
+dengue <- read.fasta("dengue.fasta")
 
 enfermedades <- list(zika, corona, wuhan, mers, dengue)
+rm(zika, corona, wuhan, mers, dengue)
+names(enfermedades) <- c("zika", "corona", "wuhan", "mers", "dengue")
+
+proteinas <- list(
+  read.fasta("./proteinas/HA.fasta"),
+  read.fasta("./proteinas/M1.fasta"),
+  read.fasta("./proteinas/M2.fasta"),
+  read.fasta("./proteinas/NA.fasta"),
+  read.fasta("./proteinas/NP.fasta"),
+  read.fasta("./proteinas/NS1.fasta"),
+  read.fasta("./proteinas/NS2.fasta"),
+  read.fasta("./proteinas/PA.fasta"),
+  read.fasta("./proteinas/PB1.fasta"),
+  read.fasta("./proteinas/PB2.fasta")
+)
+names(proteinas) <- c("HA", "M1", "M2", "NA", "NP", "NS1", "NS2", "PA", "PB1", "PB2")
 
 
 #Tamaño de secuencias
@@ -58,15 +73,44 @@ complementaria <- function(enfermedades){
   j <- 1
   for (i in 1:length(enfermedades)){
     
-    complementaria[i] <- lapply(enfermedades[[i]],comp)
+    complementaria[i] <- lapply(enfermedades[[1]],comp)
   }
   return(complementaria)
 }
 
+# Regresa todas las bases
+allBases <- function(compos){
+  bases <- c()
+  for(el in compos){
+    bases <- c(bases,as.numeric(el))
+  }
+  return(list(
+    a = bases[seq(from = 1, to = length(bases), by = 4)],
+    c = bases[seq(from = 2, to = length(bases), by = 4)],
+    g = bases[seq(from = 3, to = length(bases), by = 4)],
+    t = bases[seq(from = 4, to = length(bases), by = 4)]
+  ))
+}
 
 #Resultados
 tamaño(enfermedades)
-composición(enfermedades)
+tamaño(proteinas)
+
+cE <- composición(enfermedades)
+cP <- composición(proteinas)
+
 numgc(enfermedades)
+numgc(proteinas)
+
 complementaria(enfermedades)
+complementaria(proteinas)
+
+
+basesE <- allBases(cE)
+barplot(matrix(c(basesE$a, basesE$c, basesE$g, basesE$t), nrow = 4, byrow = TRUE), beside = TRUE, col = c("red", "black", "green", "orange"), las =2, names.arg= names(enfermedades))
+legend("topleft",legend = c("A","C","G", "T") , col = c("red", "black", "green", "orange"),  pt.cex = 1, pch = 15 , cex = 1)
+
+basesP <- allBases(cP)
+barplot(matrix(c(basesP$a, basesP$c, basesP$g, basesP$t), nrow = 4, byrow = TRUE), beside = TRUE, col = c("red", "black", "green", "orange"), las =2, names.arg= names(proteinas))
+legend("topleft",legend = c("A","C","G", "T") , col = c("red", "black", "green", "orange"),  pt.cex = 1, pch = 15 , cex = 0.8)
 ```
